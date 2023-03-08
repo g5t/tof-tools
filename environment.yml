@@ -3,7 +3,6 @@ channels:
   - conda-forge
 dependencies:
   - python >= 3.11.0
-  - ipykernel >= 8.11.0
   - jupyterlab >= 3.6.1
   - numpy >= 1.24.2
   - palettable >= 3.3.0
