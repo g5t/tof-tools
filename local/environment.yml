@@ -1,0 +1,11 @@
+name: tof-tools
+channels:
+  - conda-forge
+dependencies:
+  - python >= 3.11.0
+  - jupyterlab >= 3.6.1
+  - numpy >= 1.24.2
+  - palettable >= 3.3.0
+  - ipywidgets >= 8.0.4
+  - voila >= 0.4.0
+
