@@ -38,6 +38,13 @@ class ClickToggleButtons(ipw.ToggleButtons):
             self._click_handlers(self)
 
 
+def twelve_colors():
+    # Copied from palettable.colorbrewer.qualitative.Paired_12
+    # to avoid weird depencency issues installing palettable/colorbrewer
+    colors = ('#a6cee3', '#1f78b4', '#b2df8a', '#33a02c', '#fb9a99', '#e31a1c',
+              '#fdbf6f', '#ff7f00', '#cab2d6', '#6a3d9a' ,'#ffff99', '#b15928')
+    return colors
+
 # functions previously defined in a TikZ (LaTeX) image
 def hbar2_over_2m():
     return 2.0722  # approimate in meV angstrom^2
@@ -256,7 +263,6 @@ def cspec_ei_reps(ei, reps):
     return rep_eis(ei, reps, 160, 3.5 * sqrt(5) / 2, 14)
 
 def list_q_reps_svg(thetas, ei, en, reps, psimin, psimax, width=325, height=325, border=30, **kwargs):
-    from palettable.colorbrewer.qualitative import Paired_12 as colormap
     from math import cos, sin, pi, sqrt
     ki, kf = kival(ei), kfval(ei, en)
     size = min(width, height) / 2 - border
@@ -267,7 +273,7 @@ def list_q_reps_svg(thetas, ei, en, reps, psimin, psimax, width=325, height=325,
     content += grid_svg(width-2*border, height-2*border, size, scale, border, stroke='#aaa')
     content += label_q_svg(width-2*border, height-2*border, border)
     
-    colors = colormap.hex_colors
+    colors = twelve_colors()
     for rep_n, rep_ei in enumerate(cspec_ei_reps(ei, reps)):
         if rep_ei <= en:
             pass
@@ -333,7 +339,6 @@ def cspec_en_reps(ei, reps):
     return rep_enmaxs(ei, reps, 160, 3.5 * sqrt(5) / 2, 14)
 
 def list_e_reps_svg(thetas, ei, reps, width=325, height=325, border=30, **kwargs):
-    from palettable.colorbrewer.qualitative import Paired_12 as colormap
     enmin = -1
     xsize = width - 2 * border
     ysize = height / 2 - border
@@ -345,7 +350,7 @@ def list_e_reps_svg(thetas, ei, reps, width=325, height=325, border=30, **kwargs
     content += grid_e_svg(width-2*border, height-2*border, xsize, qscale, ysize, escale, border, stroke='#aaa')
     content += label_e_svg(width-2*border, height-2*border, border)
     
-    colors = colormap.hex_colors
+    colors = twelve_colors()
     for rep_n, (rep_ei, rep_en) in enumerate(zip(cspec_ei_reps(ei, reps), cspec_en_reps(ei, reps))):
         if rep_ei <= 0:
             pass

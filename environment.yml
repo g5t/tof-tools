@@ -4,6 +4,5 @@ channels:
   - https://repo.mamba.pm/conda-forge
 dependencies:
   - numpy >= 1.24.2
-  - palettable >= 3.3.0
   - ipywidgets >= 8.0.4
   - ipycanvas
